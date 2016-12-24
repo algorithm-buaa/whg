@@ -1,0 +1,39 @@
+    {{range .irs}}    
+        <div class="col-sm-3">
+            <article class="col-item">
+        		<div class="photo">
+        			<div class="options">
+        				<button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Add to wish list">
+        					<i class="fa fa-heart"></i>
+        				</button>
+        				<button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Compare">
+        					<i class="fa fa-exchange"></i>
+        				</button>
+        			</div>
+        			<div class="options-cart">
+        				<button class="btn btn-default" title="Add to cart">
+        					<span class="fa fa-shopping-cart"></span>
+        				</button>
+        			</div>
+        			<a href="#"> <img src="{{index .Images 0}}" class="img-responsive" alt="Product Image" /> </a>
+        		</div>
+        		<div class="info">
+        			<div class="row">
+        				<div class="price-details col-md-6">
+        					<p class="details">
+        						{{.Intro}}
+        					</p>
+        					<h1>{{.Name}}</h1>
+        					<span class="price-new">¥110.00</span>
+        				</div>
+        			</div>
+        		</div>
+        	</article>
+            <p class="text-center">Hover over image</p>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    {{end}}

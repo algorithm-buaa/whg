@@ -1,0 +1,230 @@
+.bounds.padding {
+    padding: 0 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.bounds {
+    position: relative;
+    max-width: 1140px;
+    min-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg-blue {
+    /*background-color: #0e0e0e;*/
+    border-color: #0e0e0e;
+    color: #f2f2f2;
+}
+
+.content {
+    min-width: 960px;
+    position: relative;
+    /*padding: 40px 0 80px;*/
+}
+
+a.item .column {
+    position: relative;
+    width: 50%;
+    padding: 0;
+    height: 100%;
+}
+.column {
+    position: relative;
+    width: 50%;
+    padding: 0;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+a.item.active {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    outline: 2px solid rgba(0, 0, 0, 0);
+}
+
+a.item {
+    height: 235px;
+    display: block;
+    opacity: .6;
+    height: 235px;
+    overflow: hidden;
+    background: #fff;
+    color: #303030;
+    margin: 20px 0;
+    outline: 2px solid rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+
+
+.zoom:hover .image .text {
+    padding-right: 24px;
+    -webkit-transition-delay: 400ms;
+    -moz-transition-delay: 400ms;
+    transition-delay: 400ms
+}
+
+.zoom:hover .image .arrow {
+    opacity: 0.5;
+   filter: alpha(opacity=100);
+    -webkit-transition-delay: 400ms;
+    -moz-transition-delay: 400ms;
+    transition-delay: 400ms
+}
+.zoom .image img {
+    -webkit-transition: -webkit-transform 400ms ease;
+    -moz-transition: -moz-transform 400ms ease;
+    transition: transform 400ms ease
+}
+.zoom:hover .image img {
+    -webkit-transition-duration: 6s;
+    -webkit-transform: scale(1.1);
+    -moz-transition-duration: 6s;
+    -moz-transform: scale(1.1);
+    transition-duration: 6s;
+    transform: scale(1.1)
+}
+.zoom:hover .image .overlay {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+a.item .image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    line-height: 235px;
+    font-size: 180%;
+}
+
+.image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*background: #252525;*/
+    overflow: hidden;
+    display: block;
+}
+
+.link-col-text {
+	color: #fff;
+	font-size: 24px;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Segoe UI';
+	font-weight: 100;
+	display: inline-block;
+	padding-top: 5px;
+}
+
+.link-abs {
+    position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	background: transparent;
+	transition: all 0.5s ease;
+opacity: 0;
+}
+
+.link-abs:hover {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.45);
+opacity: 1;
+}
+
+.text {
+    width: 385px;
+    padding: 0 30px 0 40px;
+    margin: 45px auto 0;
+}
+
+
+
+/*Main style*/
+.list-quotes {
+    cursor: pointer;
+    height: auto;
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    border-bottom: 1px solid blue;
+}
+.list-quotes img,
+.list-quotes h1 {
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+}
+.list-quotes img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.list-quotes h1{
+    background: rgba(20,31,44,0.8);
+    bottom: 30px;
+    float: right;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px;
+    position: absolute;
+    margin: 0;
+}
+
+.list-quotes p {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0,50px,0);
+    transform: translate3d(0,50px,0);
+    font-size: 15px;
+    font-weight: normal;
+    background: rgba(51,153,153,0.8);
+    width: 100%;
+    color: #fff;
+}
+.list-quotes:hover img {
+    -webkit-transform: translate3d(0,-80px,0);
+    transform: scale(1.2);
+    transition: all 250ms ease;
+}
+.list-quotes:hover{
+    box-shadow: 0 0 5px 2px rgba(51,153,153, 0.5);
+}
+.list-quotes:hover h1 {
+    -webkit-transform: translate3d(0,-100px,0);
+    transform: translate3d(0,-100px,0);
+    text-shadow: 0px 0 15px #fff;
+    transition: all 250ms ease;
+}
+.list-quotes:hover p {
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.quotes span{
+    color:#222;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #fff;
+}

@@ -1,0 +1,141 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<div class="container">
+        <!--顶部横幅, 重要事件区域-->
+        {{template "top.html" .}}
+
+        <!--shortcut-->
+        {{template "homenav.html" .}}
+
+        <div class="row">
+            <div id="wrapper">
+
+                <!-- Sidebar -->
+                <!-- {{template "sidebar.html" .}} -->
+
+                <!-- Page content -->
+                <div id="page-content-wrapper">
+
+                    <div class="page-content inset" data-spy="scroll" data-target="#spy">
+                        <div class="row">
+                            {{template "slide7.html" .}}
+                            <!--活动入口-->
+                            {{template "sale.html" .}}
+                        </div>
+                        <div class="row">
+                            {{template "boxlist.html" .}}
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="content bg-blue">
+                        <!--<h1 class="tab center bounds padding active"><span>Products</span></h1>-->
+                        <div class="bounds padding">
+
+                            <a href="/Main/Page/Products" class="item zoom active" id="anch5">
+                                <div class="column">
+                                    <div class="image">
+                                        <img id="ctl00_body_rptProducts_ctl00_imgProduct" class="cover accelerate" src='public/img/bvh_products1.jpg' alt="antimicrobial alphasan additive prevents odors" />
+                                        <div class="link-abs">
+                                            <p class="link-col-text">View More...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="text">
+                                        <h2>HENKEL POLYBIT CONSTRUCTION CHEMICALS</h2>
+                                        <p><span class="text-smaller">Waterproofing. Industrial Flooring. Structural Repair. Sealants and Adhesleves.</span></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/dispersitech-pigment-dispersion/" class="item zoom active">
+                                <div class="column">
+                                    <div class="image">
+
+                                        <img id="ctl00_body_rptProducts_ctl01_imgProduct" class="cover accelerate" src='public/img/bvh_products2.jpg' alt="Dispersitech Pigment Dispersion" />
+                                        <div class="link-abs">
+                                            <p class="link-col-text">View More...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="text">
+                                        <h2>PIGMENTS FOR CONCRETE</h2>
+                                        <p><span class="text-smaller"></span></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/liquitint-polymeric-colorants/" class="item zoom active">
+                                <div class="column">
+                                    <div class="image">
+                                        <img id="ctl00_body_rptProducts_ctl02_imgProduct" class="cover accelerate" src='public/img/bvh_products5.jpg' alt="Transparent polypropylene polymeric colorants" />
+                                        <div class="link-abs">
+                                            <p class="link-col-text">View More...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="text">
+                                        <h2>INDUSTRIAL CHEMICALS</h2>
+                                        <p><span class="text-smaller"></span></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/reactint-polymeric-colorants/" class="item zoom active">
+                                <div class="column">
+                                    <div class="image">
+                                        <img id="ctl00_body_rptProducts_ctl03_imgProduct1" class="cover accelerate" src='public/img/bvh_products4.jpg' alt="reactint coloring technology polyurethane thermoset resins" />
+                                        <div class="link-abs">
+                                            <p class="link-col-text">View More...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="text">
+                                        <h2>LIGHT INDUSTRIAL EQUIPMENT</h2>
+                                        <p><span class="text-smaller"></span></p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="/reactint-polymeric-colorants/" class="item zoom active">
+                                <div class="column">
+                                    <div class="image">
+                                        <img id="ctl00_body_rptProducts_ctl03_imgProduct" class="cover accelerate" src='public/img/bvh_products3.jpg' alt="reactint coloring technology polyurethane thermoset resins" />
+                                        <div class="link-abs">
+                                            <p class="link-col-text">View More...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="text">
+                                        <h2>POLYPLAST CONSTRUCTION CHEMICALS</h2>
+                                        <p><span class="text-smaller">Concrete Production. Other Products.</span></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}

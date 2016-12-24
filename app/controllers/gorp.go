@@ -6,6 +6,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/revel/modules/db/app"
 	r "github.com/revel/revel"
+	"golang.org/x/crypto/bcrypt"
 	"wuhuaguo.com/whgv01/app/models"
 )
 
@@ -40,12 +41,12 @@ func InitDB() {
 	Dbm.TraceOn("[gorp]", r.INFO)
 	Dbm.CreateTablesIfNotExists()
 
-	// bcryptPassword, _ := bcrypt.GenerateFromPassword(
-	// 	[]byte("123456"), bcrypt.DefaultCost)
-	// demoUser := &models.User{0, "游客", "游客", "123456", bcryptPassword}
-	// if err := Dbm.Insert(demoUser); err != nil {
-	// 	panic(err)
-	// }
+	bcryptPassword, _ := bcrypt.GenerateFromPassword(
+		[]byte("123456"), bcrypt.DefaultCost)
+	demoUser := &models.User{0, "游客", "游客", "123456", bcryptPassword}
+	if err := Dbm.Insert(demoUser); err != nil {
+		panic(err)
+	}
 }
 
 type GorpController struct {

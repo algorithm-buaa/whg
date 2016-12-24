@@ -223,9 +223,9 @@ func main() {
 			64: "verifyPassword",
 		},
 		"wuhuaguo.com/whgv01/app/models.(*Item).Validate": { 
-			45: "i.Name",
-			50: "i.Intro",
-			55: "i.Spec",
+			46: "i.Name",
+			51: "i.Intro",
+			56: "i.Spec",
 		},
 		"wuhuaguo.com/whgv01/app/models.(*User).Validate": { 
 			28: "user.Username",

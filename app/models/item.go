@@ -20,7 +20,8 @@ type Item struct {
 	//首页图片
 	FirstImage string
 	//介绍图片  多张图片
-	Images string
+	Images     string
+	DisplayPos int
 }
 
 type ItemToRender struct {

@@ -23,6 +23,8 @@ func (c WxApp) WxP() revel.Result {
 		panic(err)
 		return c.RenderText("error")
 	}
-	revel.INFO.Println(body)
+
+	str := string(body)
+	revel.INFO.Println(str)
 	return c.RenderText("nihao")
 }

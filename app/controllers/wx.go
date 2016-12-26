@@ -1,8 +1,11 @@
 package controllers
 
 import (
+	"bytes"
+	"encoding/xml"
 	"github.com/revel/revel"
 	"io/ioutil"
+	"wuhuaguo.com/whgv01/app/models"
 )
 
 type WxApp struct {
@@ -26,10 +29,28 @@ func (c WxApp) WxP() revel.Result {
 
 	str := string(body)
 	revel.INFO.Println(str)
-	return c.RenderText("<xml><ToUserName><![CDATA[oKvGywSzMr5dSYtDTTHOQxzSoCT8]]></ToUserName>
-							<FromUserName><![CDATA[gh_bacadd9c67fd]]></FromUserName>
-							<CreateTime>1482747385</CreateTime>
-							<MsgType><![CDATA[text]]></MsgType>
-							<Content><![CDATA[123]]></Content>
-						</xml>")
+	msg := models.ParseMsg(str)
+
+	tu := &models.CDDATA{V: msg.FromUserName}
+	fu := &models.CDDATA{V: msg.ToUserName}
+	mt := &models.CDDATA{V: "text"}
+	ct := &models.CDDATA{V: "resp: " + msg.Content}
+
+	rm := &models.RspMsg{
+		ToUserName:   tu,
+		FromUserName: fu,
+		CreateTime:   msg.CreateTime,
+		MsgType:      mt,
+		Content:      ct,
+	}
+
+	var b bytes.Buffer
+	enc := xml.NewEncoder(&b)
+	enc.Indent("  ", "    ")
+	if err := enc.Encode(rm); err != nil {
+		revel.ERROR.Println("error: %v\n", err)
+	}
+	rsmsg := b.String()
+	revel.INFO.Println(rsmsg)
+	return c.RenderText(rsmsg)
 }

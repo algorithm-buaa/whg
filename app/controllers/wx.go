@@ -26,5 +26,10 @@ func (c WxApp) WxP() revel.Result {
 
 	str := string(body)
 	revel.INFO.Println(str)
-	return c.RenderText("nihao")
+	return c.RenderText("<xml><ToUserName><![CDATA[oKvGywSzMr5dSYtDTTHOQxzSoCT8]]></ToUserName>
+							<FromUserName><![CDATA[gh_bacadd9c67fd]]></FromUserName>
+							<CreateTime>1482747385</CreateTime>
+							<MsgType><![CDATA[text]]></MsgType>
+							<Content><![CDATA[123]]></Content>
+						</xml>")
 }

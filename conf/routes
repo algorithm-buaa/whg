@@ -13,6 +13,9 @@ GET 	/product								Product.Detail
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
+
+GET     /wx                                     WxApp.Wx
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/*filepath                       Static.Serve("public")
 

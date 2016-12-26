@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/revel/revel"
+	"io/ioutil"
 )
 
 type WxApp struct {
@@ -17,6 +18,11 @@ func (c WxApp) Wx(signature string,
 }
 
 func (c WxApp) WxP() revel.Result {
-	revel.INFO.Println(c.Request)
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		panic(err)
+		return c.RenderText("error")
+	}
+	revel.INFO.Println(body)
 	return c.RenderText("nihao")
 }

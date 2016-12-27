@@ -57,6 +57,7 @@ func (c WxApp) WxP() revel.Result {
 
 func (c WxApp) Index() revel.Result {
 	user := c.connected()
+	revel.INFO.Println("WxApp/Index: " + c.Request.UserAgent())
 
 	revel.INFO.Println("username: %q", user.Username)
 	c.Session["user"] = user.Username

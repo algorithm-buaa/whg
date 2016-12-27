@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"github.com/revel/revel"
 	"io/ioutil"
+	"strings"
 	"wuhuaguo.com/whgv01/app/models"
 )
 
@@ -57,11 +58,7 @@ func (c WxApp) WxP() revel.Result {
 
 func (c WxApp) Login(code string, state string) revel.Result {
 	revel.INFO.Println("code %q state %q", code, state)
-	if code != nil {
-		return c.RenderText("login as %q", code)
-	} else {
-		return c.RenderText("can not login")
-	}
+	return c.RenderText("login as %q", code)
 }
 
 func (c WxApp) Index() revel.Result {

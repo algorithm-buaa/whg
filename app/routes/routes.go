@@ -188,3 +188,37 @@ func (_ tSellers) Index(
 }
 
 
+type tWxApp struct {}
+var WxApp tWxApp
+
+
+func (_ tWxApp) Wx(
+		signature string,
+		timestamp string,
+		nonce string,
+		echostr string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "signature", signature)
+	revel.Unbind(args, "timestamp", timestamp)
+	revel.Unbind(args, "nonce", nonce)
+	revel.Unbind(args, "echostr", echostr)
+	return revel.MainRouter.Reverse("WxApp.Wx", args).Url
+}
+
+func (_ tWxApp) WxP(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("WxApp.WxP", args).Url
+}
+
+func (_ tWxApp) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("WxApp.Index", args).Url
+}
+
+

@@ -3,31 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="robots" content="noindex">
 
-    <title>plantilla, mobile, template - Bootsnipp.com</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>无花果</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <style type="text/css">
-    .menuI{
-    margin-top: 5px;
-}
-
-.principal{
-	margin-top: 50px;
-	margin-bottom: 49px;
-}
-
-.hacked-font{
-	font-family: hacked;
-}
-
-.menu span{
-	color: #FFF;
-}
-    </style>
+    <!--Font Awesome-->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/public/css/wx/nav.css">
+	<link rel="stylesheet" media="screen" href='public/css/boxlist.css'>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    	<!-- http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/ -->
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -35,85 +25,80 @@
             if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
             else $('head > link').filter(':first').replaceWith(defaultCSS); 
         }
-        $( document ).ready(function() {
-          var iframe_height = parseInt($('html').height()); 
-          window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
-        });
+
+	    $(document).ready(function() {  
+  		 	$(".carousel-inner").swiperight(function() {  
+    		  $(this).parent().carousel('prev');  
+	    	});  
+		   	$(".carousel-inner").swipeleft(function() {  
+		      $(this).parent().carousel('next');  
+	   		});  
+		});  
     </script>
 </head>
 <body>
-	<!--Font Awesome-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-	    	<div class="container">
-	        	<div class="navbar-header">
-	          		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			            <span class="sr-only">Toggle navigation</span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-	          		</button>
-	          		<a class="navbar-brand hacked-font" href="#">Logo</a>
-	        	</div>
-	        	<div id="navbar" class="navbar-collapse collapse">
-	          		<ul class="nav navbar-nav navbar-right">
-	            		<li><a href="../navbar/">Default</a></li>
-	           	 		<li class="dropdown">
-		              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-		              		<ul class="dropdown-menu">
-		                		<li><a href="#">Action</a></li>
-		                		<li><a href="#">Another action</a></li>
-				                <li><a href="#">Something else here</a></li>
-				                <li role="separator" class="divider"></li>
-				                <li class="dropdown-header">Nav header</li>
-				                <li><a href="#">Separated link</a></li>
-				                <li><a href="#">One more separated link</a></li>
-		              		</ul>
-	            		</li>
-	          		</ul>
-	        	</div><!--/.nav-collapse -->
-	      	</div>
-    	</nav>	
-		<div class="principal">	
-			
-		</div>
-		<!--Menu inferior-->
-		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation"> 
-			<div class="container">
-				<div class="row menu">
-					<div class="col-md-3 col-lg-3 col-xs-3">
+	<nav class="navbar navbar-fixed-top" role="navigation">
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	    <ul class="nav navbar-nav">
+		<li id="custom-search-input">
+            <div class="input-group col-xs-9 col-xs-offset-2">
+                <input type="text" class="  search-query form-control" placeholder="Search" />
+                <span class="input-group-btn">
+                    <button class="btn" type="button">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </li>
+        </ul>
+	</nav>
+
+	{{template "wxapp/wxslider.html" .}}
+
+	{{template "wxapp/wxlist.html" .}}
+
+	<!--底部导航栏-->
+	<div class="navbar nav-custom navbar-fixed-bottom" role="navigation"> 
+		<div class="container">
+			<div class="row menu">
+				<div class="col-md-3 col-lg-3 col-xs-3">
+					<a href="#">
 						<center>
 							<span class="fa fa-home fa-2x menuI"></span>
 							<br>
 							<span class="label">Menu 1</span>
 						</center>
-					</div>
-					<div class="col-md-3 col-lg-3 col-xs-3">
+					</a>
+				</div>
+				<div class="col-md-3 col-lg-3 col-xs-3">
+					<a href="#">
 						<center>
 							<span class="fa fa-dashboard fa-2x menuI"></span>
 							<br>
 							<span class="label">Menu 2</span>
 						</center>
-					</div>
-					<div class="col-md-3 col-lg-3 col-xs-3">
+					</a>
+				</div>
+				<div class="col-md-3 col-lg-3 col-xs-3">
+					<a href="#">
 						<center>
 							<span class="fa fa-paper-plane-o fa-2x menuI"></span>
 							<br>
 							<span class="label">Menu 4</span>
 						</center>
-					</div>
-					<div class="col-md-3 col-lg-3 col-xs-3">
+					</a>
+				</div>
+				<div class="col-md-3 col-lg-3 col-xs-3">
+					<a href="#">
 						<center>
 							<span class="fa fa-cog fa-2x menuI"></span>
 							<br>
 							<span class="label">Menu 5</span>
 						</center>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
-	<script type="text/javascript">
-	
-	</script>
+	</div>
 </body>
 </html>

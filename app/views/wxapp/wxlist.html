@@ -1,0 +1,12 @@
+{{range .irs}}    
+<div class="col-md-2 col-xs-4 column productbox">
+    <img src="{{index .Images 0}}" class="img-responsive">
+    <div class="producttitle">{{.Name}}</div>
+    <div class="productprice">
+        <div class="pull-right">
+            <a href="#" class="btn btn-danger btn-sm" role="button">BUY</a>
+        </div>
+        <div class="pricetext">{{.Price}}</div>
+    </div>
+</div>
+{{end}}

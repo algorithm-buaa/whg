@@ -217,15 +217,49 @@ func main() {
 			
 		})
 	
+	revel.RegisterController((*controllers.WxApp)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Wx",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "signature", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "timestamp", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "nonce", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "echostr", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "WxP",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					69: []string{ 
+						"user",
+						"irs",
+					},
+				},
+			},
+			
+		})
+	
 	revel.DefaultValidationKeys = map[string]map[int]string{ 
 		"wuhuaguo.com/whgv01/app/controllers.Application.SaveUser": { 
 			63: "verifyPassword",
 			64: "verifyPassword",
 		},
 		"wuhuaguo.com/whgv01/app/models.(*Item).Validate": { 
-			46: "i.Name",
-			51: "i.Intro",
-			56: "i.Spec",
+			50: "i.Name",
+			55: "i.Intro",
+			60: "i.Spec",
 		},
 		"wuhuaguo.com/whgv01/app/models.(*User).Validate": { 
 			28: "user.Username",

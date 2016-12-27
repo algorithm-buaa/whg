@@ -56,5 +56,15 @@ func (c WxApp) WxP() revel.Result {
 }
 
 func (c WxApp) Index() revel.Result {
-	return c.Render()
+	user := c.connected()
+
+	revel.INFO.Println("username: %q", user.Username)
+	c.Session["user"] = user.Username
+
+	//获取boxlist 商品
+	irs, err := c.boxListItems()
+	if err != nil {
+		revel.ERROR.Println(err)
+	}
+	return c.Render(user, irs)
 }

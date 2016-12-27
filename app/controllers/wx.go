@@ -5,7 +5,6 @@ import (
 	"encoding/xml"
 	"github.com/revel/revel"
 	"io/ioutil"
-	"strings"
 	"wuhuaguo.com/whgv01/app/models"
 )
 

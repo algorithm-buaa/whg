@@ -102,6 +102,13 @@ type tApplication struct {}
 var Application tApplication
 
 
+func (_ tApplication) CheckUser(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.CheckUser", args).Url
+}
+
 func (_ tApplication) AddUser(
 		) string {
 	args := make(map[string]string)
@@ -162,32 +169,6 @@ func (_ tApplication) Logout(
 }
 
 
-type tProduct struct {}
-var Product tProduct
-
-
-func (_ tProduct) Detail(
-		id int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "id", id)
-	return revel.MainRouter.Reverse("Product.Detail", args).Url
-}
-
-
-type tSellers struct {}
-var Sellers tSellers
-
-
-func (_ tSellers) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Sellers.Index", args).Url
-}
-
-
 type tWxApp struct {}
 var WxApp tWxApp
 
@@ -219,6 +200,32 @@ func (_ tWxApp) Index(
 	args := make(map[string]string)
 	
 	return revel.MainRouter.Reverse("WxApp.Index", args).Url
+}
+
+
+type tProduct struct {}
+var Product tProduct
+
+
+func (_ tProduct) Detail(
+		id int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "id", id)
+	return revel.MainRouter.Reverse("Product.Detail", args).Url
+}
+
+
+type tSellers struct {}
+var Sellers tSellers
+
+
+func (_ tSellers) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Sellers.Index", args).Url
 }
 
 

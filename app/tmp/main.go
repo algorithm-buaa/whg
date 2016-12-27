@@ -125,6 +125,13 @@ func main() {
 	revel.RegisterController((*controllers.Application)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
+				Name: "CheckUser",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
 				Name: "AddUser",
 				Args: []*revel.MethodArg{ 
 				},
@@ -136,7 +143,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					55: []string{ 
+					71: []string{ 
 						"user",
 						"irs",
 					},
@@ -147,7 +154,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					59: []string{ 
+					75: []string{ 
 					},
 				},
 			},
@@ -165,7 +172,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					87: []string{ 
+					103: []string{ 
 					},
 				},
 			},
@@ -181,34 +188,6 @@ func main() {
 			},
 			&revel.MethodType{
 				Name: "Logout",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Product)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Detail",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*int)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					28: []string{ 
-						"ir",
-					},
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Sellers)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Index",
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
@@ -251,10 +230,38 @@ func main() {
 			
 		})
 	
+	revel.RegisterController((*controllers.Product)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Detail",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*int)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					28: []string{ 
+						"ir",
+					},
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Sellers)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
 	revel.DefaultValidationKeys = map[string]map[int]string{ 
 		"wuhuaguo.com/whgv01/app/controllers.Application.SaveUser": { 
-			63: "verifyPassword",
-			64: "verifyPassword",
+			79: "verifyPassword",
+			80: "verifyPassword",
 		},
 		"wuhuaguo.com/whgv01/app/models.(*Item).Validate": { 
 			54: "i.Name",

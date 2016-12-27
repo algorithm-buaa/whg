@@ -1,0 +1,31 @@
+curl -i 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx82c3aa347250de4b&secret=60942365de45e1297cc50d7ead3371d4'
+
+iqtnDR71xbgFmpSp-5NP3EiC_hDsuBPLv_Y7vVBT4m28d03FZSnY4-oJ8QOZcX4iYEbzpgXsVe__1XI67iM25evqAt4HidbM6GB5Kne222NiFBJsVzpbYTNH6lLRXxr5LQDgAJAVAN
+
+curl -i 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=iqtnDR71xbgFmpSp-5NP3EiC_hDsuBPLv_Y7vVBT4m28d03FZSnY4-oJ8QOZcX4iYEbzpgXsVe__1XI67iM25evqAt4HidbM6GB5Kne222NiFBJsVzpbYTNH6lLRXxr5LQDgAJAVAN' -d '{
+     "button":[
+     {	
+          "type":"view",
+          "name":"我要下单",
+          "url":"http://123.207.143.158/wxindex"
+      },
+      {
+           "name":"菜单",
+           "sub_button":[
+           {	
+               "type":"click",
+               "name":"优惠活动",
+               "key":"V1001_SALE"
+            },
+            {
+               "type":"click",
+               "name":"我的订单",
+               "key":"V1001_BOOKINGS"
+            },
+            {
+               "type":"click",
+               "name":"投诉建议",
+               "key":"V1001_SUG"
+            }]
+       }]
+ }'

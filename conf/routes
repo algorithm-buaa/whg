@@ -23,3 +23,7 @@ GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
 *       /:controller/:action                    :controller.:action
+
+
+# wx 页面
+GET		/wxindex								                                                 

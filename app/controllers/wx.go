@@ -54,3 +54,7 @@ func (c WxApp) WxP() revel.Result {
 	revel.INFO.Println(rsmsg)
 	return c.RenderText(rsmsg)
 }
+
+func (c WxApp) Index() revel.Result {
+	return c.Render()
+}

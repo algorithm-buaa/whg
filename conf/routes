@@ -26,4 +26,4 @@ GET     /public/*filepath                       Static.Serve("public")
 
 
 # wx 页面
-GET		/wxindex								                                                 
+GET		/wxindex								WxApp.Index                                                 

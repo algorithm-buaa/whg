@@ -14,6 +14,7 @@ type Application struct {
 
 func (c Application) CheckUser() revel.Result {
 	if user := c.connected(); user == nil {
+		c.Flash.Error("Please log in first")
 		revel.INFO.Println("check User  user: nil")
 		return c.Redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect")
 	}
@@ -23,19 +24,25 @@ func (c Application) CheckUser() revel.Result {
 func (c Application) AddUser() revel.Result {
 	if user := c.connected(); user != nil {
 		c.RenderArgs["user"] = user
-		revel.INFO.Println("add user: " + user.Name)
+		revel.INFO.Println("add user " + user.Name)
+	}
+	return nil
+}
+
+func (c Application) wxId() *models.User {
+	if userid, ok := c.Session["wxid"]; ok {
+		return c.getUser(userid)
 	}
 	return nil
 }
 
 func (c Application) connected() *models.User {
-	// if c.RenderArgs["user"] != nil {
-	// 	return c.RenderArgs["user"].(*models.User)
-	// }
-	// if username, ok := c.Session["user"]; ok {
-	// 	revel.INFO.Println("got session user " + username)
-	// 	return c.getUser(username)
-	// }
+	if c.RenderArgs["user"] != nil {
+		return c.RenderArgs["user"].(*models.User)
+	}
+	if username, ok := c.Session["user"]; ok {
+		return c.getUser(username)
+	}
 	//返回游客账号
 	//判断浏览器
 	ua := c.Request.UserAgent()

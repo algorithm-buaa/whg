@@ -56,12 +56,12 @@ func (c WxApp) WxP() revel.Result {
 }
 
 func (c WxApp) Index() revel.Result {
-	user := c.connected()
-	revel.INFO.Println("WxApp/Index: " + c.Request.UserAgent())
+	user := c.wxId()
+	revel.INFO.Println("WxApp/Index: " + user.Name + " " + c.Request.UserAgent())
 
-	revel.INFO.Println("username: %q", user.Username)
-	c.Session["user"] = user.Username
-
+	if user == nil {
+		c.Redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect")
+	}
 	//获取boxlist 商品
 	irs, err := c.boxListItems()
 	if err != nil {

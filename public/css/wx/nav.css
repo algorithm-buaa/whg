@@ -1,0 +1,90 @@
+.menuI{
+    margin-top: 5px;
+}
+
+.nav-custom {
+    background-color: rgba(135, 185, 121, 0.66);
+}
+
+.navbar {
+    margin-bottom: 0px; 
+}
+
+input.search-query.form-control {
+    background-color: rgba(198, 151, 133, 0.32);
+}
+
+button.btn.ui-btn.ui-shadow.ui-corner-all {
+    background-color: rgba(135, 106, 106, 0.83);
+}
+
+.carousel {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.principal{
+	margin-top: 50px;
+	margin-bottom: 49px;
+}
+
+.hacked-font{
+	font-family: hacked;
+}
+
+.menu span{
+	color: #FFF;
+}
+
+.main-text
+{
+    position: absolute;
+    top: 50px;
+    width: 96.66666666666666%;
+    color: #FFF;
+}
+.btn-min-block
+{
+    min-width: 170px;
+    line-height: 26px;
+}
+.btn-clear
+{
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+    margin-right: 15px;
+}
+.btn-clear:hover
+{
+    color: #000;
+    background-color: #FFF;
+}
+
+
+
+/*box list*/
+
+.productbox {
+    background-color:#ffffff;
+	padding:10px;
+	margin-bottom:10px;
+	-webkit-box-shadow: 0 8px 6px -6px  #999;
+	   -moz-box-shadow: 0 8px 6px -6px  #999;
+	        box-shadow: 0 8px 6px -6px #999;
+}
+
+.producttitle {
+    font-weight:bold;
+	padding:5px 0 5px 0;
+}
+
+.productprice {
+	border-top:1px solid #dadada;
+	padding-top:5px;
+}
+
+.pricetext {
+	font-weight:bold;
+	font-size:1.4em;
+}

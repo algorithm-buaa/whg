@@ -32,8 +32,12 @@ button.btn.ui-btn.ui-shadow.ui-corner-all {
 	font-family: hacked;
 }
 
-.menu span{
+.whitespan{
 	color: #FFF;
+}
+
+.cart {
+	color: red;
 }
 
 .main-text

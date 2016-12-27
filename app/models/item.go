@@ -38,6 +38,10 @@ func (i *ItemToRender) Price() float32 {
 	return i.item.Price
 }
 
+func (i *ItemToRender) Id() int {
+	return i.item.Id
+}
+
 func (i *ItemToRender) Intro() string {
 	return i.item.Intro
 }

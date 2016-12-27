@@ -1,6 +1,8 @@
 {{range .irs}}    
 <div class="col-md-2 col-xs-4 column productbox">
-    <img src="{{index .Images 0}}" class="img-responsive">
+    <a href="/wx/item?id={{.Id}}">
+        <img src="{{index .Images 0}}" class="img-responsive">
+    </a>
     <div class="producttitle">{{.Name}}</div>
     <div class="productprice">
         <div class="pull-right">

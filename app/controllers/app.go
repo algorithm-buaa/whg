@@ -3,12 +3,21 @@ package controllers
 import (
 	"github.com/revel/revel"
 	"golang.org/x/crypto/bcrypt"
+	"strings"
 	"wuhuaguo.com/whgv01/app/models"
 	"wuhuaguo.com/whgv01/app/routes"
 )
 
 type Application struct {
 	GorpController
+}
+
+func (c Application) CheckUser() revel.Result {
+	if user := c.connected(); user == nil {
+		c.Flash.Error("Please log in first")
+		return c.Redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect")
+	}
+	return nil
 }
 
 func (c Application) AddUser() revel.Result {
@@ -27,7 +36,14 @@ func (c Application) connected() *models.User {
 		return c.getUser(username)
 	}
 	//返回游客账号
-	return c.getUser("游客")
+	//判断浏览器
+	ua := c.Request.UserAgent()
+	revel.INFO.Println(ua)
+	if strings.Contains(c.Request.UserAgent(), "micromessenger") {
+		return nil
+	} else {
+		return c.getUser("游客")
+	}
 }
 
 func (c Application) getUser(username string) *models.User {

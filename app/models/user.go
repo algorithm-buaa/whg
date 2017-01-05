@@ -51,32 +51,20 @@ func ValidatePassword(v *revel.Validation, password string) *revel.ValidationRes
 * 网页授权接口凭证
  */
 type WebAccessTokenObj struct {
-	access_token  string
-	expires_in    int
-	refresh_token string
-	openid        string
-	scope         string
-	errcode       int
-	errmsg        string
+	Access_token  string
+	Expires_in    int
+	Refresh_token string
+	Openid        string
+	Scope         string
+	Errcode       int
+	Errmsg        string
 }
 
-func (w *WebAccessTokenObj) Access_token() string {
-	return w.access_token
-}
-func (w *WebAccessTokenObj) Refresh_token() string {
-	return w.refresh_token
-}
-func (w *WebAccessTokenObj) Openid() string {
-	return w.openid
-}
-func (w *WebAccessTokenObj) Scope() string {
-	return w.scope
-}
-func (w *WebAccessTokenObj) Errmsg() string {
-	return w.errmsg
-}
-func (w *WebAccessTokenObj) Errcode() int {
-	return w.errcode
+func (w *WebAccessTokenObj) String() string {
+	return w.Access_token + " 123\t" +
+		w.Refresh_token + "123\t" +
+		w.Openid + "\t" +
+		w.Scope
 }
 
 func ParseWxWebAccessToken(jstr string) *WebAccessTokenObj {
@@ -88,8 +76,9 @@ func ParseWxWebAccessToken(jstr string) *WebAccessTokenObj {
 		revel.ERROR.Println(err.Error())
 		return nil
 	}
-	if obj.Errcode() != 0 {
-		revel.ERROR.Printf("get weixin web access_token error %d, msg: %s", obj.Errcode(), jstr)
+
+	if obj.Errcode != 0 {
+		revel.ERROR.Printf("get weixin web access_token error %d, msg: %s", obj.Errcode, jstr)
 		return nil
 	}
 

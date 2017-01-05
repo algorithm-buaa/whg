@@ -74,9 +74,9 @@ func (c WxApp) Login(code string, state string) revel.Result {
 			str := string(body)
 			//解析json
 			wa := models.ParseWxWebAccessToken(str)
-			revel.INFO.Println(str, (*wa).Openid())
+			revel.INFO.Println(str, (*wa).Openid)
 			if wa != nil {
-				return c.RenderText("%q has login", (*wa).Openid())
+				return c.RenderText("%q has login", (*wa).Openid)
 			} else {
 				return c.RenderText("获取access_token 错误")
 			}

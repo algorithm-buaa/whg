@@ -68,7 +68,7 @@ func (c WxApp) Login(code string, state string) revel.Result {
 			return c.RenderText(err.Error())
 		} else {
 			body, err1 := ioutil.ReadAll(resp.Body)
-			if err1 == nil {
+			if err1 != nil {
 				return c.RenderText(err1.Error())
 			}
 			str := string(body)

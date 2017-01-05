@@ -60,29 +60,29 @@ type WebAccessTokenObj struct {
 	errmsg        string
 }
 
-func (w WebAccessTokenObj) Access_token() string {
+func (w *WebAccessTokenObj) Access_token() string {
 	return w.access_token
 }
-func (w WebAccessTokenObj) Refresh_token() string {
+func (w *WebAccessTokenObj) Refresh_token() string {
 	return w.refresh_token
 }
-func (w WebAccessTokenObj) Openid() string {
+func (w *WebAccessTokenObj) Openid() string {
 	return w.openid
 }
-func (w WebAccessTokenObj) Scope() string {
+func (w *WebAccessTokenObj) Scope() string {
 	return w.scope
 }
-func (w WebAccessTokenObj) Errmsg() string {
+func (w *WebAccessTokenObj) Errmsg() string {
 	return w.errmsg
 }
-func (w WebAccessTokenObj) Errcode() int {
+func (w *WebAccessTokenObj) Errcode() int {
 	return w.errcode
 }
 
 func ParseWxWebAccessToken(jstr string) *WebAccessTokenObj {
 	dec := json.NewDecoder(strings.NewReader(jstr))
-	var obj WebAccessTokenObj
-	if err := dec.Decode(&obj); err == io.EOF {
+	obj := &WebAccessTokenObj{}
+	if err := dec.Decode(obj); err == io.EOF {
 		return nil
 	} else if err != nil {
 		revel.ERROR.Println(err.Error())
@@ -93,5 +93,5 @@ func ParseWxWebAccessToken(jstr string) *WebAccessTokenObj {
 		return nil
 	}
 
-	return &obj
+	return obj
 }

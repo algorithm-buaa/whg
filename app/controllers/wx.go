@@ -3,8 +3,10 @@ package controllers
 import (
 	"bytes"
 	"encoding/xml"
+	"fmt"
 	"github.com/revel/revel"
 	"io/ioutil"
+	"net/http"
 	"wuhuaguo.com/whgv01/app/models"
 )
 
@@ -57,7 +59,27 @@ func (c WxApp) WxP() revel.Result {
 
 func (c WxApp) Login(code string, state string) revel.Result {
 	revel.INFO.Println("code %q state %q", code, state)
-	return c.RenderText("login as %q", code)
+	if code == "" {
+		return c.RenderText("login fail %q", state)
+	} else {
+		//获取到了用户id
+		resp, err := http.Get(fmt.Sprintf("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx82c3aa347250de4b&secret=60942365de45e1297cc50d7ead3371d4&code=%s&grant_type=authorization_code", code))
+		if err == nil {
+			return c.RenderText(err.Error())
+		} else {
+			body, err1 := ioutil.ReadAll(resp.Body)
+			if err1 == nil {
+				return c.RenderText(err1.Error())
+			}
+			str := string(body)
+			//解析json
+			wa := models.ParseWxWebAccessToken(str)
+			revel.INFO.Println(str)
+
+			return c.RenderText("%s has login", (*wa).Openid())
+		}
+	}
+
 }
 
 func (c WxApp) Index() revel.Result {

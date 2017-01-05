@@ -64,7 +64,7 @@ func (c WxApp) Login(code string, state string) revel.Result {
 	} else {
 		//获取到了用户id
 		resp, err := http.Get(fmt.Sprintf("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx82c3aa347250de4b&secret=60942365de45e1297cc50d7ead3371d4&code=%s&grant_type=authorization_code", code))
-		if err == nil {
+		if err != nil {
 			return c.RenderText(err.Error())
 		} else {
 			body, err1 := ioutil.ReadAll(resp.Body)

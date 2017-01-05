@@ -14,6 +14,7 @@ type User struct {
 	Name               string
 	Username, Password string
 	HashedPassword     []byte
+	Wxopenid           string
 }
 
 func (u *User) String() string {

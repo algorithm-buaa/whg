@@ -29,13 +29,6 @@ func (c Application) AddUser() revel.Result {
 	return nil
 }
 
-func (c Application) wxId() *models.User {
-	if userid, ok := c.Session["wxid"]; ok {
-		return c.getUser(userid)
-	}
-	return nil
-}
-
 func (c Application) connected() *models.User {
 	if c.RenderArgs["user"] != nil {
 		return c.RenderArgs["user"].(*models.User)

@@ -76,7 +76,11 @@ func (c WxApp) Login(code string, state string) revel.Result {
 			wa := models.ParseWxWebAccessToken(str)
 			revel.INFO.Println(str, (*wa).Openid)
 			if wa != nil {
-				return c.RenderText("%q has login", (*wa).Openid)
+				user := c.checkWxUser(wa)
+				if user != nil {
+					c.Session["wxid"] = user.UserId
+					return c.Redirect("/wxindex")
+				}
 			} else {
 				return c.RenderText("获取access_token 错误")
 			}
@@ -85,11 +89,41 @@ func (c WxApp) Login(code string, state string) revel.Result {
 
 }
 
+//检查更新微信用户信息 如果没有则创建一个微信用户
+func (c WxApp) checkWxUser(wat *models.WebAccessTokenObj) *models.User {
+	user := &models.User{Wxopenid: wat.Openid}
+	if err := Dbm.Insert(user); err != nil {
+		panic(err)
+	}
+	//获取用户id
+	return c.getUser(wat.Openid)
+}
+
+func (c WxApp) getUser(wxid string) *models.User {
+	users, err := c.Txn.Select(models.User{},
+		`select * from user where Wxopenid = ?`, wxid)
+	if err != nil {
+		panic(err)
+	}
+	if len(users) == 0 {
+		return nil
+	}
+	return users[0].(*models.User)
+}
+
+func (c WxApp) wxId() *models.User {
+	if wxid, ok := c.Session["wxid"]; ok {
+		return c.getUser(wxid)
+	}
+	return nil
+}
+
 func (c WxApp) Index() revel.Result {
 	user := c.wxId()
 	if user != nil {
-		revel.INFO.Println("WxApp/Index: " + user.Name + " " + c.Request.UserAgent())
+		revel.INFO.Printf("wellcome back %s", user.Wxopenid)
 	} else {
+		revel.INFO.Printf("you are the first time to get in, get access_token first")
 		return c.Redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82c3aa347250de4b&redirect_uri=http%3a%2f%2f123.207.143.158%2fwxlogin&response_type=code&scope=snsapi_base&state=123#wechat_redirect")
 	}
 	//获取boxlist 商品

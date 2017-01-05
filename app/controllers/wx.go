@@ -58,7 +58,7 @@ func (c WxApp) WxP() revel.Result {
 }
 
 func (c WxApp) Login(code string, state string) revel.Result {
-	revel.INFO.Println("code %q state %q", code, state)
+	revel.INFO.Println("code %s state %s", code, state)
 	if code == "" {
 		return c.RenderText("login fail %q", state)
 	} else {
@@ -76,7 +76,7 @@ func (c WxApp) Login(code string, state string) revel.Result {
 			wa := models.ParseWxWebAccessToken(str)
 			revel.INFO.Println(str, (*wa).Openid())
 			if wa != nil {
-				return c.RenderText("%s has login", (*wa).Openid())
+				return c.RenderText("%q has login", (*wa).Openid())
 			} else {
 				return c.RenderText("获取access_token 错误")
 			}
